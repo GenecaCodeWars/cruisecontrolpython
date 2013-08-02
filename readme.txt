@@ -1,0 +1,1 @@
+curl --data "status={\"text\":\"Test\",\"players\":\"3\"}" http://ccpython.michaelbreyes.c9.io/command
