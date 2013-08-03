@@ -14,7 +14,7 @@ def index():
 def index():
     status = json.loads(request.body.read())
     if (status["RoundNumber"] == 0) :
-        return "New game, I should probably reset"
+        print "New game, I should probably reset"
     return json.dumps(createCommands())
     
 def createCommands():
@@ -26,15 +26,15 @@ def createCommands():
 def createCommand(vesselid):
     cmd = Command()
     cmd.vesselid = vesselid
+    cmd.coordinate = createCoordinate(1, 1).__dict__
     return cmd
 	
 def createCoordinate(x, y):
     coordinate = Coordinate()
     coordinate.X = x
-	coordinate.Y = y
+    coordinate.Y = y
     return coordinate
 
 # start server and listen for requests
 # for Cloud9 run(host=os.environ["OPENSHIFT_DIY_IP"], port=int(os.environ["PORT"]), debug=True)
 run(host='0.0.0.0', port=int(os.environ["PORT"]), debug=True)
-
